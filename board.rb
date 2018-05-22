@@ -48,6 +48,7 @@ class Board
   end
 
   def [](pos)
+    return in_bounds?(pos) unless in_bounds?(pos)
     row, col = pos
     grid[row][col]
   end
@@ -68,12 +69,15 @@ class Board
     self[start_pos] = NullPiece.new(start_pos)
   end
 
-  def valid_pos?(pos, color)
-    return true if self[pos].class == NullPiece
+  def in_bounds?(pos)
     row, col = pos
     return false unless row.between?(0, 7) && col.between?(0, 7)
-    return false if self[pos].color == color
-    true
+  end
+
+  def valid_pos?(pos)
+    return false unless in_bounds?(pos)
+    return true if self[pos].class == NullPiece
+    false
   end
 
   def add_piece(piece, pos) # make private later
@@ -87,6 +91,10 @@ class Board
   def own_team?(color, pos)
     # not be a NullPiece &&
     !@grid[pos].is_a?(NullPiece) && color == @grid[pos].color
+  end
+
+  def take_piece?(pos, color)
+    return false unless valid_pos(pos)
   end
 
   def safe_move?(color, pos)
