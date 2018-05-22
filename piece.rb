@@ -11,6 +11,10 @@ class Piece
     []
   end
 
+  def moves
+
+  end
+
   def update_pos(pos)
     @pos = pos
   end
