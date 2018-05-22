@@ -24,18 +24,16 @@ class Display
       puts
     end
   end
-
-
 end
-
-board = Board.new
-cursor = Cursor.new([4,4], board)
-display = Display.new(cursor, board)
-
-display.render
-puts "you cannot play this yet"
-sleep(4)
-while true
-  display.render
-  cursor.get_input
-end
+#
+# board = Board.new
+# cursor = Cursor.new([4,4], board)
+# display = Display.new(cursor, board)
+#
+# display.render
+# puts "you cannot play this yet"
+# sleep(4)
+# while true
+#   display.render
+#   cursor.get_input
+# end
