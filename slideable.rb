@@ -30,5 +30,15 @@ module Slideable
 
   def how_far_can_you_go(dx, dy)
     x, y = pos
+    moves = []
+    loop do
+      x, y = x + dx, y + dy
+      pos = [x, y]
+
+      if board.valid_pos?(pos, @color)
+        moves << pos
+      else
+
+    end
   end
 end
