@@ -5,4 +5,9 @@ class Rook < Piece
     super(color, board, pos)
     @symbol = "\u2656 "
   end
+
+  def move_dirs
+    []
+  end
+
 end

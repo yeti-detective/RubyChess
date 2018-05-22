@@ -7,4 +7,9 @@ class Bishop < Piece
     super(color, board, pos)
     @symbol = "\u2657 "
   end
+
+  def move_dirs
+    []
+  end
+
 end

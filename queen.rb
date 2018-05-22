@@ -4,4 +4,9 @@ class Queen < Piece
     super(color, board, pos)
     @symbol = "\u2655 "
   end
+
+  def move_dirs
+    []
+  end
+
 end
