@@ -6,7 +6,7 @@ class Queen < Piece
   end
 
   def move_dirs
-    []
+    ['diagonal', 'horizontal']
   end
 
 end

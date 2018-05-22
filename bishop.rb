@@ -9,7 +9,7 @@ class Bishop < Piece
   end
 
   def move_dirs
-    []
+    ['diagonal']
   end
 
 end
