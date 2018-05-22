@@ -7,12 +7,8 @@ class Piece
     @pos = pos
   end
 
-  def move_dirs
-    []
-  end
-
   def moves
-
+    []
   end
 
   def update_pos(pos)
