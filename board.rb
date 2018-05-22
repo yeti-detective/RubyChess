@@ -62,15 +62,18 @@ class Board
       raise TypeError.new("No piece at start position")
     end
     unless valid_pos?(end_pos)
-      raise RangeError.new("End position is not on the board")
+      raise RangeError.new("Cannot move to this position")
     end
     self[end_pos] = self[start_pos]
     self[start_pos] = NullPiece.new(start_pos)
   end
 
-  def valid_pos?(pos)
+  def valid_pos?(pos, color)
+    return true if self[pos].class == NullPiece
     row, col = pos
-    row.between?(0, 7) && col.between?(0, 7)
+    return false unless row.between?(0, 7) && col.between?(0, 7)
+    return false if self[pos].color == color
+    true
   end
 
   def add_piece(piece, pos) # make private later
