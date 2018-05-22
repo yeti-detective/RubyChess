@@ -8,7 +8,10 @@ class Piece
   end
 
   def moves
-    []
+    moves = []
+    if move_dirs.include?('diagonal')
+      up_right = [@pos[0] + 1, @pos[1] + 1]
+    end
   end
 
   def update_pos(pos)
