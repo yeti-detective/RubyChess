@@ -1,11 +1,15 @@
 require_relative 'piece'
+require_relative 'stepable'
+
 class Pawn < Piece
+  include Stepable
+
   def initialize(color, board, pos)
     super(color, board, pos)
     @symbol = "\u2659 "
   end
 
-  def move_dirs
+  def move_diffs
     # if color == :black, can move + down rows else can move - up rows
     forward_steps.map { |step| [step + pos[0], pos[1]] } + side_attacks
   end
