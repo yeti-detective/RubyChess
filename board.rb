@@ -66,6 +66,7 @@ class Board
       raise RangeError.new("Cannot move to this position")
     end
     self[end_pos] = self[start_pos]
+    self[end_pos].update_pos(end_pos)
     self[start_pos] = NullPiece.new(start_pos)
   end
 

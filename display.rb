@@ -12,7 +12,6 @@ class Display
   end
   def render
     system('clear')
-    # debugger
     board.grid.each do |row|
       row.each do |square|
         if square.pos == cursor.cursor_pos
@@ -32,7 +31,7 @@ display = Display.new(cursor, board)
 
 display.render
 puts "you cannot play this yet"
-sleep(4)
+sleep(3)
 while true
   display.render
   cursor.get_input
