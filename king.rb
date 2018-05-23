@@ -2,7 +2,7 @@ require_relative 'piece'
 require_relative 'stepable'
 
 class King < Piece
-  # include Stepable
+  include Stepable
   MOVE_DIFFS = [
     [1,-1],
     [1, 0],
@@ -12,15 +12,15 @@ class King < Piece
     [-1, 0],
     [-1,-1],
     [0, -1]
-  ]
+  ].freeze
 
   def initialize(color, board, pos)
     super(color, board, pos)
     @symbol = "\u2654 "
   end
 
-  def move_dirs
-
+  def move_diffs
+    MOVE_DIFFS
   end
 
   def potential_moves
