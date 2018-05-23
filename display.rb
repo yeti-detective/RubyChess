@@ -30,7 +30,7 @@ cursor = Cursor.new([4,4], board)
 display = Display.new(cursor, board)
 
 display.render
-puts "you cannot play this yet"
+puts "not quite playable, gimme second"
 sleep(3)
 while true
   display.render

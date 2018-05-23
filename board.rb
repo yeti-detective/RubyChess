@@ -113,9 +113,25 @@ class Board
   end
 
   def in_check?(color)
+    king_pos = find_king(color)
+    grid.each do |row|
+      row.each do |square|
+        if square.color != color && square.class != NullPiece
+          return true if square.moves.include?(king_pos)
+        end
+      end
+    end
+    false
   end
 
   def find_king(color)
+    grid.each do |row|
+      row.each do |square|
+        if square.is_a?(King) && square.color == color
+          return square.pos
+        end
+      end
+    end
   end
 
   def pieces
