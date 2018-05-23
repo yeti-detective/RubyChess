@@ -4,7 +4,7 @@ module Stepable
       cur_x, cur_y = pos
       pos = [cur_x + dx, cur_y + dy]
 
-      next unless board.valid_pos?(pos)
+      next unless board.valid_pos?(pos) || board.take_piece?(pos, color)
 
       if board[pos].class == NullPiece
         moves << pos
