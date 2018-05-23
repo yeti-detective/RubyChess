@@ -1,8 +1,8 @@
 require_relative 'piece'
-require_relative 'slidable'
+require_relative 'slideable'
 
 class Queen < Piece
-  include Slidable
+  include Slideable
 
   def initialize(color, board, pos)
     super(color, board, pos)
@@ -10,7 +10,7 @@ class Queen < Piece
   end
 
   def move_dirs
-    ['diagonal', 'horizontal']
+    horizontal_dirs + diagonal_dirs
   end
 
 end

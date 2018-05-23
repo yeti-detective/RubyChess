@@ -72,6 +72,7 @@ class Board
   def in_bounds?(pos)
     row, col = pos
     return false unless row.between?(0, 7) && col.between?(0, 7)
+    true
   end
 
   def valid_pos?(pos)
@@ -89,12 +90,13 @@ class Board
   end
 
   def own_team?(color, pos)
-    # not be a NullPiece &&
     !@grid[pos].is_a?(NullPiece) && color == @grid[pos].color
   end
 
   def take_piece?(pos, color)
-    return false unless valid_pos(pos)
+    return false unless in_bounds?(pos)
+    return true if self[pos].class != NullPiece && self[pos].color != color
+    false
   end
 
   def safe_move?(color, pos)
@@ -102,7 +104,6 @@ class Board
     grid.each do |row|
       row.each do |square|
         unless square.is_a?(NullPiece) && square.color == color
-          # puts square.move_dirs
           gonna_getcha.concat(square.move_dirs)
         end
       end

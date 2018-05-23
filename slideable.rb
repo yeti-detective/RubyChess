@@ -11,7 +11,7 @@ module Slideable
     [-1, 1],
     [1, 1],
     [1, -1]
-  ]
+  ].freeze
 
   def horizontal_dirs
     CROSS_DIRECTIONS
@@ -24,8 +24,9 @@ module Slideable
   def moves
     moves = []
     move_dirs.each do |dx, dy|
-
+      moves.concat(how_far_can_you_go(dx, dy))
     end
+    moves
   end
 
   def how_far_can_you_go(dx, dy)
@@ -35,10 +36,15 @@ module Slideable
       x, y = x + dx, y + dy
       pos = [x, y]
 
-      if board.valid_pos?(pos, @color)
-        moves << pos
+      if board.valid_pos?(pos)
+        moves << pos unless moves.include?(pos)
+      elsif board.take_piece?(pos, self.color)
+        moves << pos unless moves.include?(pos)
+        break
       else
-
+        break
+      end
     end
+    moves.uniq
   end
 end
