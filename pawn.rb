@@ -9,7 +9,7 @@ class Pawn < Piece
     @symbol = "\u2659 "
   end
 
-  def move_diffs
+  def moves
     # if color == :black, can move + down rows else can move - up rows
     forward_steps.map { |step| [step + pos[0], pos[1]] } + side_attacks
   end
