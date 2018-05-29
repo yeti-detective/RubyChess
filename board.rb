@@ -134,6 +134,16 @@ class Board
     end
   end
 
+  def highlight_moves(moves)
+    grid.each_with_index do |row, r_idx|
+      row.each_with_index do |square, c_idx|
+        if moves.include?([r_idx, c_idx])
+          square.color = :red
+        end
+      end
+    end
+  end
+
   def pieces
   end
 
