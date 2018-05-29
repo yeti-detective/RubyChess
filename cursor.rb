@@ -95,7 +95,6 @@ class Cursor
       cursor_pos[0] + diff[0],
       cursor_pos[1] + diff[1]
     ]
-    # debugger
     if board.in_bounds?(potential_moves)
       @cursor_pos = potential_moves
     end
