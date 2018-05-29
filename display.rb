@@ -34,5 +34,10 @@ puts "not quite playable, gimme second"
 sleep(3)
 while true
   display.render
-  cursor.get_input
+  crs = cursor.get_input
+  if crs.is_a?(Array)
+    unless board[crs].is_a?(NullPiece)
+      board[crs].select
+    end
+  end
 end
