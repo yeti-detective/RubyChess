@@ -11,18 +11,26 @@ require_relative 'queen'
 
 class Board
   attr_reader :grid
-  def initialize
+  def initialize(blank = false)
     @sentinel = NullPiece.new([10, 10])
-    @grid = Array.new(8) do |row|
-      Array.new(8) do |col|
-        case row
-        when 1, 6
-          color = row == 1 ? :black : :white
-          Pawn.new(color, self, [row, col])
-        when 0, 7
-          back_row(row, col)
-        else
+    if blank
+      @grid = Array.new(8) do |row|
+        Array.new(8) do |col|
           NullPiece.new([row, col])
+        end
+      end
+    else
+      @grid = Array.new(8) do |row|
+        Array.new(8) do |col|
+          case row
+          when 1, 6
+            color = row == 1 ? :black : :white
+            Pawn.new(color, self, [row, col])
+          when 0, 7
+            back_row(row, col)
+          else
+            NullPiece.new([row, col])
+          end
         end
       end
     end
@@ -148,11 +156,22 @@ class Board
   end
 
   def dup
-    dup_board = grid.map do |row|
+    dup_board = Board.blank_board
+    grid.each do |row|
       row.map do |square|
-        
+        if square.is_a?(NullPiece)
+          NullPiece.new(square.pos)
+        else
+          piece = square.class.new(square.color, dup_board, square.pos)
+          dup_board.add_piece(piece, piece.pos)
+        end
       end
     end
+    dup_board
+  end
+
+  def self.blank_board
+    return Board.new(true)
   end
 
   def move_piece!(color, start_pos, end_pos)
