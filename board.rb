@@ -90,12 +90,8 @@ class Board
     false
   end
 
-  def add_piece(piece, pos) # make private later
+  def add_piece(piece, pos) 
     self[pos] = piece
-  end
-
-  def checkmate?(color)
-    # if color.king.valid_moves.empty?
   end
 
   def own_team?(color, pos)
