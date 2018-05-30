@@ -12,7 +12,7 @@ Good luck!
 * board and pieces are black and white, so game looks best with a different color terminal background
 ***
 * CD into top-level directory
-* ~~run `ruby 'display.rb'` from terminal~~
+* run `ruby 'display.rb'` from terminal
 ![Chess Board](./screenshots/chess_board.png)
 * Use arrow keys to move cursor, select piece to move with Enter
 * Available moves will be highlighted in red
