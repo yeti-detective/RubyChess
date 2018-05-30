@@ -5,14 +5,17 @@ class Game
     @display = display
     @board = display.board
     @cursor = display.cursor
+    @pos = display.cursor.cursor_pos
   end
 
   def play
     until game_over
       display.render
-      pos = cursor.get_input
-      if !board[pos].is_a?(NullPiece)
-        selected_piece(board[pos])
+      temp_pos = cursor.get_input
+      if temp_pos.is_a?(Array)
+        @pos = temp_pos
+      elsif temp_pos && !board[@pos].is_a?(NullPiece)
+        selected_piece(board[@pos])
       end
     end
 
@@ -27,11 +30,13 @@ class Game
     moved = false
     selection = {}
     until moved
-      next_moves = piece.moves.concat([piece.pos])
-      selection = fake_cursor.cycle_moves(next_moves)
+      next_moves = piece.moves.concat([piece.pos]).sort
+      selection = fake_display.cursor.cycle_moves(next_moves, fake_display)
       moved = selection[:finished]
     end
-
+    if selection[:pos] != @pos
+      board.move_piece(piece.pos, selection[:pos])
+    end
   end
 
   def game_over
