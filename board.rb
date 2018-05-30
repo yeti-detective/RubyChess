@@ -148,6 +148,11 @@ class Board
   end
 
   def dup
+    dup_board = grid.map do |row|
+      row.map do |square|
+        
+      end
+    end
   end
 
   def move_piece!(color, start_pos, end_pos)
