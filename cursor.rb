@@ -45,14 +45,12 @@ class Cursor
     handle_key(key)
   end
 
-  def cycle_moves(moves)
+  def cycle_moves(moves, fake_display)
     counter = 0
     moved = false
     selection = {}
     until moved
       key = KEYMAP[read_char]
-      cursor_pos = moves[counter % moves.length]
-      p cursor_pos
       case key
       when :up, :right
         counter += 1
@@ -60,9 +58,13 @@ class Cursor
         counter -= 1
       when :return, :space
         moved = true
-        selection[:pos] = cursor_pos
+        selection[:pos] = @cursor_pos
         selection[:finished] = true
+      when :ctrl_c
+        Process.exit
       end
+      @cursor_pos = moves[counter % moves.length]
+      fake_display.render
     end
     return selection
   end
@@ -103,8 +105,8 @@ class Cursor
     next_move_from_here = nil
     case key
     when :return, :space
-      next_move_from_here = cursor_pos
-      board[cursor_pos].select
+      # next_move_from_here = cursor_pos
+      return true
     when *(KEYMAP.values[0...4])
       next_move_from_here = update_pos(MOVES[key])
     when :ctrl_c
