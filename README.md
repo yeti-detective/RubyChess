@@ -13,11 +13,13 @@ Good luck!
 ***
 * CD into top-level directory
 * run `ruby proof_of_concept.rb` from terminal
-![Chess Board](./screenshots/chess_board.png)
+* ![Chess Board](./screenshots/chess_board.png)
 * Use arrow keys to move cursor, select piece to move with Enter
 * Available moves will be highlighted in red
+* ![Chess Board with highlighted potential moves](./screenshots/chess_board2.png)
 * Select desired destination square & press Enter to move OR
 * Select piece with cursor & press Enter again to cancel (to choose another piece to move)
+* Use ctrl + C to quit at any time
 ***
 # CURRENTLY IN DEVELOPMENT
 * Piece capture
