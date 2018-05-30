@@ -31,7 +31,7 @@ display = Display.new(cursor, board)
 
 display.render
 puts "not quite playable, gimme second"
-sleep(3)
+sleep(2)
 while true
   display.render
   crs = cursor.get_input
