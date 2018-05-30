@@ -26,8 +26,5 @@ class Piece
   def select
     @board.highlight_moves(self.moves)
   end
-  # private
   attr_reader :pos, :board
-  # def to_s
-  # end
 end

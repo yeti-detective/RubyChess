@@ -32,8 +32,4 @@ class King < Piece
     end
     moves.select { |move| board.valid_pos?(move) && board[move].is_a?(NullPiece) }
   end
-
-  # protected
-
-
 end
