@@ -1,7 +1,7 @@
 # Ruby Chess
 ***
 *A game by [Chris B](http://www.motomorphosis-ind.com)*
-Ruby Chess (in development) is a chess game written in the Ruby language meant to be played by 1 human against a computer opponent.
+>Ruby Chess (in development) is a chess game written in the Ruby language meant to be played by 1 human against a computer opponent.
 When choosing its next move, the computer uses [depth-first search](https://en.wikipedia.org/wiki/Depth-first_search) to find the shortest path to victory.
 Good luck!
 ***
