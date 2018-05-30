@@ -79,6 +79,7 @@ class Board
   end
 
   def in_bounds?(pos)
+    return false if pos.nil?
     row, col = pos
     return false unless row.between?(0, 7) && col.between?(0, 7)
     true
@@ -90,7 +91,7 @@ class Board
     false
   end
 
-  def add_piece(piece, pos) 
+  def add_piece(piece, pos)
     self[pos] = piece
   end
 
@@ -168,9 +169,6 @@ class Board
 
   def self.blank_board
     return Board.new(true)
-  end
-
-  def move_piece!(color, start_pos, end_pos)
   end
 
 end

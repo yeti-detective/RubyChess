@@ -1,8 +1,4 @@
 require 'colorize'
-require_relative 'board'
-require_relative 'cursor'
-
-require 'byebug'
 
 class Display
   attr_reader :board, :cursor
@@ -23,16 +19,4 @@ class Display
       puts
     end
   end
-end
-
-board = Board.new
-cursor = Cursor.new([4,4], board)
-display = Display.new(cursor, board)
-
-display.render
-puts "not quite playable, gimme second"
-sleep(2)
-while true
-  display.render
-  p cursor.get_input
 end

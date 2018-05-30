@@ -19,3 +19,7 @@ Good luck!
 * Select desired destination square & press Enter to move OR
 * Select piece with cursor & press Enter again to cancel (to choose another piece to move)
 ***
+# CURRENTLY IN DEVELOPMENT
+* Piece capture
+* Computer player logic
+***
