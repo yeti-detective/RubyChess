@@ -7,6 +7,10 @@ class NullPiece < Piece
     @symbol = "\u25A3 "
   end
 
+  def select
+    'no piece here'
+  end
+
   private
   def self.get_color(pos)
     case NullPiece.both_odd_even(pos[0], pos[1])
