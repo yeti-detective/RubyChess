@@ -82,6 +82,7 @@ class Cursor
     case key
     when :return, :space
       next_move_from_here = cursor_pos
+      board[cursor_pos].select
     when *(KEYMAP.values[0...4])
       next_move_from_here = update_pos(MOVES[key])
     when :ctrl_c
