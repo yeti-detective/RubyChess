@@ -45,6 +45,28 @@ class Cursor
     handle_key(key)
   end
 
+  def cycle_moves(moves)
+    counter = 0
+    moved = false
+    selection = {}
+    until moved
+      key = KEYMAP[read_char]
+      cursor_pos = moves[counter % moves.length]
+      p cursor_pos
+      case key
+      when :up, :right
+        counter += 1
+      when :down, :left
+        counter -= 1
+      when :return, :space
+        moved = true
+        selection[:pos] = cursor_pos
+        selection[:finished] = true
+      end
+    end
+    return selection
+  end
+
   private
   attr_writer :cursor_pos
 
